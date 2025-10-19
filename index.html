@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🎆 Happy Diwali 🎇</title>
+
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    background: radial-gradient(circle at bottom, #3b0069, #000);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  /* Diyas */
+  .diya {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: radial-gradient(orange, gold);
+    border-radius: 50%;
+    bottom: 10px;
+    animation: flicker 1s infinite alternate;
+    box-shadow: 0 0 30px gold;
+  }
+
+  @keyframes flicker {
+    from { opacity: 0.7; transform: scale(1); }
+    to { opacity: 1; transform: scale(1.1); }
+  }
+
+  /* Floating Diyas */
+  .floating-diya {
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    background: radial-gradient(orange, gold);
+    border-radius: 50%;
+    box-shadow: 0 0 25px gold;
+    animation: floatUp 8s linear infinite;
+  }
+
+  @keyframes floatUp {
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    100% { transform: translateY(-120vh) scale(0.8); opacity: 0; }
+  }
+
+  /* Toran */
+  .toran {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 80px;
+    background: repeating-linear-gradient(
+      45deg, orange, orange 10px, yellow 10px, yellow 20px, purple 20px, purple 30px
+    );
+    clip-path: polygon(0 0, 100% 0, 100% 50%, 95% 100%, 90% 50%, 85% 100%, 80% 50%, 
+                      75% 100%, 70% 50%, 65% 100%, 60% 50%, 55% 100%, 50% 50%, 
+                      45% 100%, 40% 50%, 35% 100%, 30% 50%, 25% 100%, 20% 50%, 
+                      15% 100%, 10% 50%, 5% 100%, 0 50%);
+    box-shadow: 0 4px 10px gold;
+    z-index: 1;
+  }
+
+  /* Lanterns */
+  .lantern {
+    position: absolute;
+    width: 30px;
+    height: 50px;
+    background: linear-gradient(orange, gold);
+    border-radius: 20px;
+    box-shadow: 0 0 20px yellow;
+    opacity: 0.8;
+    animation: floatLantern 10s linear infinite;
+  }
+
+  @keyframes floatLantern {
+    from { transform: translateY(100vh) scale(1); opacity: 0.8; }
+    to { transform: translateY(-150px) scale(1.3); opacity: 0; }
+  }
+
+  /* Sparkles */
+  .sparkle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: gold;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: fallSparkle 3s linear infinite;
+  }
+
+  @keyframes fallSparkle {
+    from { transform: translateY(-10px); opacity: 1; }
+    to { transform: translateY(100vh); opacity: 0; }
+  }
+
+  /* Gift Box */
+  .gift-box {
+    width: 150px;
+    height: 150px;
+    background: linear-gradient(45deg, orange, yellow);
+    border: 4px solid purple;
+    border-radius: 20px;
+    box-shadow: 0 0 25px gold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 3;
+    transition: transform 0.3s ease;
+  }
+
+  .gift-box:hover { transform: scale(1.1); }
+  .gift-box::before { content: "🎁"; font-size: 60px; }
+
+  /* Rocket */
+  .rocket {
+    position: absolute;
+    width: 10px;
+    height: 30px;
+    background: linear-gradient(to top, red, yellow);
+    left: 50%;
+    bottom: 100px;
+    transform: translateX(-50%);
+    border-radius: 5px;
+    display: none;
+  }
+
+  /* Explosion */
+  .explosion {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: gold;
+    display: none;
+  }
+
+  /* Video */
+  video {
+    position: absolute;
+    max-width: 90%;
+    max-height: 70vh;
+    display: none;
+    border-radius: 20px;
+    box-shadow: 0 0 40px gold;
+    z-index: 10;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  /* Firework Particles */
+  .firework-particle {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: radial-gradient(circle, yellow, orange, red);
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 1;
+    animation: flyOut 1.5s ease-out forwards;
+    box-shadow: 0 0 10px gold;
+  }
+
+  @keyframes flyOut {
+    0% { transform: translate(0, 0) scale(1); opacity: 1; }
+    100% { transform: translate(var(--x), var(--y)) scale(0.8); opacity: 0; }
+  }
+
+  @media (max-width: 600px) {
+    .gift-box { width: 100px; height: 100px; }
+    .gift-box::before { font-size: 45px; }
+    video { max-width: 95%; max-height: 60vh; }
+  }
+</style>
+</head>
+
+<body>
+
+<div class="toran"></div>
+
+<!-- Diyas -->
+<div class="diya" style="left:8%;"></div>
+<div class="diya" style="left:25%;"></div>
+<div class="diya" style="left:50%;"></div>
+<div class="diya" style="left:75%;"></div>
+<div class="diya" style="left:90%;"></div>
+
+<!-- Floating Diyas (top area) -->
+<script>
+  for (let i = 0; i < 6; i++) {
+    const fDiya = document.createElement('div');
+    fDiya.className = 'floating-diya';
+    fDiya.style.left = Math.random() * 90 + '%';
+    fDiya.style.bottom = Math.random() * 20 + 'px';
+    fDiya.style.animationDelay = Math.random() * 5 + 's';
+    document.body.appendChild(fDiya);
+  }
+</script>
+
+<!-- Lanterns -->
+<div class="lantern" style="left:10%; animation-delay:0s;"></div>
+<div class="lantern" style="left:30%; animation-delay:2s;"></div>
+<div class="lantern" style="left:60%; animation-delay:4s;"></div>
+<div class="lantern" style="left:80%; animation-delay:1s;"></div>
+
+<!-- Sparkles -->
+<script>
+  for (let i = 0; i < 40; i++) {
+    const sparkle = document.createElement('div');
+    sparkle.className = 'sparkle';
+    sparkle.style.left = Math.random() * 100 + 'vw';
+    sparkle.style.animationDuration = (2 + Math.random() * 3) + 's';
+    sparkle.style.animationDelay = Math.random() * 3 + 's';
+    document.body.appendChild(sparkle);
+  }
+</script>
+
+<!-- Gift Box -->
+<div class="gift-box" id="giftBox"></div>
+<div class="rocket" id="rocket"></div>
+<div class="explosion" id="explosion"></div>
+
+<!-- Video -->
+<video id="diwaliVideo" controls>
+  <source src="/video_2025-10-19_18-25-13.mp4" type="video/mp4">
+</video>
+
+<script>
+  const giftBox = document.getElementById('giftBox');
+  const rocket = document.getElementById('rocket');
+  const explosion = document.getElementById('explosion');
+  const video = document.getElementById('diwaliVideo');
+
+  giftBox.addEventListener('click', () => {
+    giftBox.style.display = 'none';
+    rocket.style.display = 'block';
+
+    rocket.animate([{ bottom: '100px' }, { bottom: '75%' }], { duration: 1500, fill: 'forwards' });
+
+    setTimeout(() => {
+      rocket.style.display = 'none';
+      explosion.style.display = 'block';
+      explosion.style.left = '50%';
+      explosion.style.bottom = '75%';
+      explosion.animate([{ transform: 'scale(1)', opacity: 1 }, { transform: 'scale(20)', opacity: 0 }], { duration: 1000, fill: 'forwards' });
+
+      // Central fireworks burst
+      createBurst(50, window.innerWidth / 2, window.innerHeight * 0.25);
+
+      setTimeout(() => {
+        explosion.style.display = 'none';
+        video.style.display = 'block';
+        video.play();
+      }, 1000);
+    }, 1500);
+  });
+
+  // Firework variations with multicolor support
+  function createBurst(particles, x, y) {
+    const types = ['normal', 'star', 'ring'];
+    const colors = ['red', 'gold', 'blue', 'lime', 'deeppink', 'cyan', 'orange', 'violet'];
+    const type = types[Math.floor(Math.random() * types.length)];
+
+    for (let i = 0; i < particles; i++) {
+      const p = document.createElement('div');
+      p.className = 'firework-particle';
+      const angle = (Math.PI * 2 * i) / particles;
+      const distance = Math.random() * 200 + 50;
+      const tx = Math.cos(angle) * distance + 'px';
+      const ty = Math.sin(angle) * distance + 'px';
+      p.style.left = x + 'px';
+      p.style.top = y + 'px';
+      p.style.setProperty('--x', tx);
+      p.style.setProperty('--y', ty);
+
+      // Random color per particle
+      const color = colors[Math.floor(Math.random() * colors.length)];
+      p.style.background = `radial-gradient(circle, white, ${color})`;
+      p.style.boxShadow = `0 0 15px ${color}`;
+
+      if (type === 'star') p.style.background = `radial-gradient(circle, white, gold)`;
+      if (type === 'ring') p.style.boxShadow = `0 0 15px cyan`;
+
+      document.body.appendChild(p);
+      setTimeout(() => p.remove(), 1500);
+    }
+  }
+
+  // Background fireworks (random colors)
+  setInterval(() => {
+    createBurst(30, Math.random() * window.innerWidth, Math.random() * window.innerHeight * 0.6);
+  }, 1000);
+
+  // Interactive fireworks (click to burst)
+  document.addEventListener('click', (e) => {
+    createBurst(40, e.clientX, e.clientY);
+  });
+</script>
+</body>
+</html>
